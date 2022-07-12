@@ -1,17 +1,26 @@
 package br.com.marcio.cambioservice.model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+@Entity(name="cambio")
 public class Cambio implements Serializable {
 
     private static final long serialVersionUID= 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name="from_currency",nullable = false,length = 3)
     private String from;
+    @Column(name="to_currency",nullable = false,length = 3)
     private String to;
+    @Column(nullable = false)
     private BigDecimal conversionFactor;
+    @Transient
     private BigDecimal convertedValue;
-    private String enviroment;
+    @Transient
+    private String environment;
 
     public Cambio(){}
 
@@ -21,7 +30,7 @@ public class Cambio implements Serializable {
         this.to = to;
         this.conversionFactor = conversionFactor;
         this.convertedValue = convertedValue;
-        this.enviroment = enviroment;
+        this.environment = enviroment;
     }
 
     public Long getId() {
@@ -64,12 +73,12 @@ public class Cambio implements Serializable {
         this.convertedValue = convertedValue;
     }
 
-    public String getEnviroment() {
-        return enviroment;
+    public String getEnvironment() {
+        return environment;
     }
 
-    public void setEnviroment(String enviroment) {
-        this.enviroment = enviroment;
+    public void setEnvironment(String environment) {
+        this.environment = environment;
     }
 
     @Override
