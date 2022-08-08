@@ -95,4 +95,16 @@ public class Cambio implements Serializable {
     public int hashCode() {
         return id != null ? id.hashCode() : 0;
     }
+
+    @Override
+    public String toString() {
+        return "Cambio{" +
+                "id=" + id +
+                ", from='" + from + '\'' +
+                ", to='" + to + '\'' +
+                ", conversionFactor=" + conversionFactor +
+                ", convertedValue=" + convertedValue +
+                ", environment='" + environment + '\'' +
+                '}';
+    }
 }
